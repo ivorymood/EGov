@@ -11,15 +11,12 @@ app = {
 		//head와 body 만드는 것
 		$(createDiv({id: 'wrapper'})).appendTo('body');
 		$(createDiv({id: 'container'})).appendTo('#wrapper');
-		//$('#result').text(x.result);
-		$.getJSON(x.context+'/', x=>{
-			alert('dddddd');
-			if(x.exist=='true'){
-				$('#container').load('<div id="test"><h1 id="result">존재OO </h1></div>');
+			if(x.result=='true'){
+				alert("보기:/exsit");
+				$('#container').load(x.context + '/exist');
 			}else{
-				$('#container').load('<div id="test"><h1 id="result">존재XX </h1></div>');
+				$('#container').load(x.context + '/not-exist');
 			}
-		})
 	}
 }
 var createDiv = x=>{

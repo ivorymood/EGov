@@ -15,7 +15,7 @@ public class PersonController {
 	private static final Logger logger = LoggerFactory.getLogger(PersonController.class);
 	@Autowired PersonService person;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping("/")//get방식은 method= RequestMethod.GET 생략
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		Map<String,String> param = new HashMap<>();
@@ -29,8 +29,17 @@ public class PersonController {
 			result="true";
 		}
 			model.addAttribute("exist", result );
-		return "home";
+		return "app";
 	}
-	
+	@RequestMapping("/exist")
+	public String exsit(){
+		System.out.println("exsit");
+		return "component/exist";
+	}
+	@RequestMapping("/not-exsit")
+	public String notExist(){
+		System.out.println("not exist");
+		return "component/not-exist";
+	}
 	
 }
